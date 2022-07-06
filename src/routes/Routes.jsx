@@ -1,5 +1,7 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import {
   Album,
   Favorites,
@@ -12,9 +14,17 @@ import {
 
 export default class Routes extends React.Component {
   render() {
+    const {
+      isLoggedIn,
+      loggingIn,
+    } = this.props;
     return (
       <Switch>
-        <Route exact path="/" component={ Login } />
+        <Route exact path="/">
+          {
+            isLoggedIn ? <Redirect to="/search" /> : <Login loggingIn={ loggingIn } />
+          }
+        </Route>
         <Route path="/search" component={ Search } />
         <Route path="/album/:id" component={ Album } />
         <Route path="/favorites" component={ Favorites } />
@@ -25,3 +35,8 @@ export default class Routes extends React.Component {
     );
   }
 }
+
+Routes.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  loggingIn: PropTypes.func.isRequired,
+};
