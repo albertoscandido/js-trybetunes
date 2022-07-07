@@ -3,10 +3,16 @@ import PropTypes from 'prop-types';
 
 export default class MusicCard extends Component {
   render() {
-    const { music, className } = this.props;
+    const {
+      music,
+      className,
+      checked,
+      handleAddSongToFavorites,
+    } = this.props;
     const {
       trackName,
       previewUrl,
+      trackId,
     } = music;
     return (
       <div className={ className }>
@@ -18,6 +24,12 @@ export default class MusicCard extends Component {
           <code>audio</code>
           .
         </audio>
+        <input
+          type="checkbox"
+          onChange={ () => handleAddSongToFavorites(music) }
+          data-testid={ `checkbox-music-${trackId}` }
+          checked={ checked }
+        />
       </div>
     );
   }
@@ -29,10 +41,15 @@ MusicCard.propTypes = {
   music: PropTypes.shape({
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
+    trackId: PropTypes.number,
   }).isRequired,
+  handleAddSongToFavorites: PropTypes.func,
+  checked: PropTypes.bool,
 };
 
 MusicCard.defaultProps = {
   className: '',
+  handleAddSongToFavorites: () => {},
+  checked: false,
   // testid: '',
 };
