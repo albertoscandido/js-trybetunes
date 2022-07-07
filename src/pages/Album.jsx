@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Header, Loading } from '../components';
 import getMusics from '../services/musicsAPI';
-import { getFavoriteSongs, addSong } from '../services/favoriteSongsAPI';
+import { getFavoriteSongs, addSong, removeSong } from '../services/favoriteSongsAPI';
 import AlbumCard from '../components/AlbumCard';
 import MusicCard from '../components/MusicCard';
 
@@ -27,11 +27,18 @@ export default class Album extends Component {
     this.setState({ musics, favorites });
   }
 
-  async handleAddSongToFavorites(music) {
+  async handleAddSongToFavorites(music, isItToRemove) {
     const { favorites } = this.state;
     this.isLoading(true);
-    this.setState({ favorites: [...favorites, music] });
-    await addSong(music);
+    if (isItToRemove) {
+      this.setState(
+        { favorites: favorites.filter(({ trackId }) => trackId !== music.trackId) },
+      );
+      await removeSong(music);
+    } else {
+      this.setState({ favorites: [...favorites, music] });
+      await addSong(music);
+    }
     this.isLoading(false);
   }
 

@@ -26,7 +26,7 @@ export default class MusicCard extends Component {
         </audio>
         <input
           type="checkbox"
-          onChange={ () => handleAddSongToFavorites(music) }
+          onChange={ () => handleAddSongToFavorites(music, checked) }
           data-testid={ `checkbox-music-${trackId}` }
           checked={ checked }
         />
