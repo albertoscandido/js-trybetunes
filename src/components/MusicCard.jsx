@@ -24,12 +24,16 @@ export default class MusicCard extends Component {
           <code>audio</code>
           .
         </audio>
-        <input
-          type="checkbox"
-          onChange={ () => handleAddSongToFavorites(music, checked) }
-          data-testid={ `checkbox-music-${trackId}` }
-          checked={ checked }
-        />
+        <label htmlFor={ `favorite-audio-${trackId}` }>
+          Favorita
+          <input
+            id={ `favorite-audio-${trackId}` }
+            type="checkbox"
+            onChange={ () => handleAddSongToFavorites(music, checked) }
+            data-testid={ `checkbox-music-${trackId}` }
+            checked={ checked }
+          />
+        </label>
       </div>
     );
   }
@@ -37,7 +41,6 @@ export default class MusicCard extends Component {
 
 MusicCard.propTypes = {
   className: PropTypes.string,
-  // testid: PropTypes.string,
   music: PropTypes.shape({
     trackName: PropTypes.string,
     previewUrl: PropTypes.string,
@@ -51,5 +54,4 @@ MusicCard.defaultProps = {
   className: '',
   handleAddSongToFavorites: () => {},
   checked: false,
-  // testid: '',
 };
