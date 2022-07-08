@@ -18,7 +18,6 @@ export default class Profile extends Component {
 
   render() {
     const { user } = this.state;
-    // const {} = user ? user;
     return (
       <div data-testid="page-profile">
         <Header />
