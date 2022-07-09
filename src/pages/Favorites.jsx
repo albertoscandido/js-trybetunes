@@ -43,7 +43,9 @@ export default class Favorites extends Component {
     const { favorites, loading } = this.state;
     return (
       <div data-testid="page-favorites">
-        <Header />
+        <Header
+          location="favorites"
+        />
         {
           loading && <Loading />
         }

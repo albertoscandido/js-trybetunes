@@ -20,7 +20,9 @@ export default class Profile extends Component {
     const { user } = this.state;
     return (
       <div data-testid="page-profile">
-        <Header />
+        <Header
+          location="profile"
+        />
         {
           !user && <Loading />
         }

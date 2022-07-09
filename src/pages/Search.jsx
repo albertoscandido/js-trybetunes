@@ -75,7 +75,9 @@ export default class Search extends Component {
 
     return (
       <div data-testid="page-search">
-        <Header />
+        <Header
+          location="search"
+        />
         <div>
           <input
             type="text"
