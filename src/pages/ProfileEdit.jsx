@@ -94,7 +94,7 @@ export default class ProfileEdit extends Component {
         }
         {
           user && !loading && (
-            <div className="header-options">
+            <div>
               <Input
                 value={ name }
                 testid="edit-input-name"

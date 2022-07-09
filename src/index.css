@@ -27,6 +27,11 @@ code {
   justify-content: center;
 }
 
+.flex-r {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .flex-r-around {
   display: flex;
   flex-flow: row nowrap;
@@ -34,11 +39,14 @@ code {
 }
 
 .flex-r-between {
-  /* max-width: 100%; */
   align-items: center;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
+}
+
+.g-05 {
+  gap: 0.5rem;
 }
 
 .root {
@@ -51,11 +59,15 @@ code {
 
 .header {
   max-width: 100%;
-  padding: 0 20px 0 20px;
   display: flex;
   flex-flow: column;
   background-color: var(--p);
   color: white;
+}
+
+.header-info {
+  padding: 10px 0;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .profile {
@@ -70,7 +82,50 @@ code {
   border-radius: 20px;
 }
 
-.profile .profile-default-photo {
+.profile .profile-default-image {
   max-width: 2rem;
-  fill: var(--s);
+  fill: var(--t);
+}
+
+.profile-image {
+  max-width: 2rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.music-image {
+  width: 2rem;
+  fill: var(--t);
+}
+
+.header-options {
+  width: 100%;
+  background-color: white;
+  gap: 5px;
+}
+
+.header-options a {
+  color: var(--t);
+  font-weight: bold;
+  font-size: 1.3rem;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(214, 213, 213);
+  height: 3.5rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.header-options .active {
+  background-color: var(--s);
+  color: white;
+}
+
+.header-options a:hover {
+  background-color: rgb(235, 230, 230);
+}
+
+.header-options .active:hover {
+  background-color: #028164;
 }
