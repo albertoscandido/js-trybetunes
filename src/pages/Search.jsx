@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '../components';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import { ReactComponent as SearchImage } from '../svg/search.svg';
 
 export default class Search extends Component {
   constructor() {
@@ -17,6 +18,11 @@ export default class Search extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.searchAlbums = this.searchAlbums.bind(this);
     this.renderAlbuns = this.renderAlbuns.bind(this);
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
+  }
+
+  handleSubmitForm(event) {
+    event.preventDefault();
   }
 
   handleInputChange({ target }) {
@@ -74,16 +80,20 @@ export default class Search extends Component {
     } = this.state;
 
     return (
-      <div data-testid="page-search">
+      <div data-testid="page-search" className="page-search">
         <Header
           location="search"
         />
-        <div>
+        <form
+          className="form-search"
+          onSubmit={ this.handleSubmitForm }
+        >
           <input
             type="text"
             data-testid="search-artist-input"
             value={ artistName }
             onChange={ this.handleInputChange }
+            placeholder="Nome do Artista"
           />
           <button
             type="button"
@@ -91,12 +101,14 @@ export default class Search extends Component {
             disabled={ artistName.length < 2 }
             onClick={ this.searchAlbums }
           >
-            Pesquisar
+            <SearchImage />
           </button>
+        </form>
+        <div className="albums-list">
+          {
+            albums && this.renderAlbuns()
+          }
         </div>
-        {
-          albums && this.renderAlbuns()
-        }
       </div>
     );
   }

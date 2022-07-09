@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --p: #023031;
   --s: #036B52;
@@ -46,14 +51,10 @@ code {
 }
 
 .g-05 {
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .root {
-  width: 100%;
-}
-
-.page-search {
   width: 100%;
 }
 
@@ -66,7 +67,7 @@ code {
 }
 
 .header-info {
-  padding: 10px 0;
+  padding: 20px 0;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -80,6 +81,11 @@ code {
   background-color: white;
   color: black;
   border-radius: 20px;
+}
+
+.profile h2 {
+  white-space: nowrap;
+  overflow:hidden;
 }
 
 .profile .profile-default-image {
@@ -115,6 +121,7 @@ code {
   background-color: rgb(214, 213, 213);
   height: 3.5rem;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
 }
 
 .header-options .active {
@@ -128,4 +135,32 @@ code {
 
 .header-options .active:hover {
   background-color: #028164;
+}
+
+.page-search {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+}
+
+.form-search {
+  display: flex;
+  align-self: center;
+  gap: 0.2rem;
+}
+
+.form-search input {
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+  color: black;
+  font-size: 1rem;
+  padding: 10px 10px 10px 10px;
+  width: 30vw;
+}
+
+.form-search button {
+  background: nome;
+  background-color: white;
+  border: none;
 }

@@ -31,10 +31,10 @@ export default class Header extends Component {
         <div className="flex-r-between header-info">
           <div className="logo">
             <div className="flex-r g-05">
-              <h1>Music</h1>
+              <h1>trybe</h1>
               <MusicImage className="music-image" />
             </div>
-            Pills
+            <h2>tunes</h2>
           </div>
           { userName ? (
             <div className="profile">
