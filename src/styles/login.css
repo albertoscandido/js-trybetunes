@@ -1,0 +1,57 @@
+:root {
+
+  --p: #023031;
+
+  --s: #036b52;
+
+  --t: #2fc18c;
+
+  --q: #003be5;
+
+}
+
+.page-login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.form-login {
+  align-items: center;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 5%) , 0 4px 8px 0 rgb(0 0 0 / 5%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  min-height: 200px;
+  min-width: 300px;
+  padding: 30px;
+  width: 50vw;
+}
+
+.form-login input {
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+  color: black;
+  font-size: 1rem;
+  min-width: 200px;
+  padding: 10px 0;
+  width: 70%;
+}
+
+.form-login button {
+  background-color: var(--q);
+  border: 1px solid gray;
+  border-radius: 0.3rem;
+  color: white;
+  font-size: 1rem;
+  min-width: 200px;
+  padding: 10px;
+  width: 70%;
+}
