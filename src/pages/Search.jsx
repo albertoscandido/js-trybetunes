@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Header } from '../components';
+import AlbumCard from '../components/AlbumCard';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import { ReactComponent as SearchImage } from '../svg/search.svg';
 
@@ -12,13 +13,13 @@ export default class Search extends Component {
       artistName: '',
       albums: null,
       searchedArtist: null,
-      // albumsWereSearched: false,
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.searchAlbums = this.searchAlbums.bind(this);
     this.renderAlbuns = this.renderAlbuns.bind(this);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.handlekeypress = this.handlekeypress.bind(this);
   }
 
   handleSubmitForm(event) {
@@ -28,6 +29,12 @@ export default class Search extends Component {
   handleInputChange({ target }) {
     const { value } = target;
     this.setState({ artistName: value });
+  }
+
+  handlekeypress(event) {
+    if (event.key === 'Enter') {
+      this.searchAlbums();
+    }
   }
 
   async searchAlbums() {
@@ -40,16 +47,11 @@ export default class Search extends Component {
   renderAlbuns() {
     const {
       albums,
-      searchedArtist,
     } = this.state;
     if (!albums) return null;
 
     return albums.length > 0 ? (
-      <div>
-        <h2>
-          Resultado de álbuns de:
-          { ` ${searchedArtist}` }
-        </h2>
+      <>
         {
           albums.map(({
             collectionId,
@@ -62,14 +64,13 @@ export default class Search extends Component {
               key={ collectionId }
               data-testid={ `link-to-album-${collectionId}` }
             >
-              <div>
-                <img src={ artworkUrl100 } alt={ collectionName } />
-                <h3>{collectionName}</h3>
-                <h4>{artistName}</h4>
-              </div>
+              <AlbumCard
+                album={ { collectionId, artistName, collectionName, artworkUrl100 } }
+                className="album-search"
+              />
             </Link>))
         }
-      </div>
+      </>
     ) : (<h2>Nenhum álbum foi encontrado</h2>);
   }
 
@@ -77,6 +78,7 @@ export default class Search extends Component {
     const {
       artistName,
       albums,
+      searchedArtist,
     } = this.state;
 
     return (
@@ -93,6 +95,7 @@ export default class Search extends Component {
             data-testid="search-artist-input"
             value={ artistName }
             onChange={ this.handleInputChange }
+            onKeyPress={ this.handlekeypress }
             placeholder="Nome do Artista"
           />
           <button
@@ -104,6 +107,17 @@ export default class Search extends Component {
             <SearchImage />
           </button>
         </form>
+        {
+          searchedArtist && albums && (
+            <div className="result-text">
+              <h2>
+                Resultado de álbuns de
+                { ` ${searchedArtist}` }
+                :
+              </h2>
+            </div>
+          )
+        }
         <div className="albums-list">
           {
             albums && this.renderAlbuns()

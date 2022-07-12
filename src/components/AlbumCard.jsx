@@ -12,8 +12,10 @@ export default class AlbumCard extends Component {
     return (
       <div className={ className }>
         <img src={ artworkUrl100 } alt={ collectionName } />
-        <h3 data-testid="album-name">{collectionName}</h3>
-        <h4 data-testid="artist-name">{artistName}</h4>
+        <div className="flex-column g-05">
+          <h3 data-testid="album-name">{collectionName}</h3>
+          <h4 data-testid="artist-name">{artistName}</h4>
+        </div>
       </div>
     );
   }
